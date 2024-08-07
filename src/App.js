@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import EmployeeContent from './Componenets/EmployeeContent';
+import Header from './Componenets/Header';
+import Main from './Componenets/Main';
+import { useState } from 'react';
 function App() {
+
+  const[contentType,SetContentType]=useState("main")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header contentType={contentType} onChange={(current)=>SetContentType(current)} ></Header>
+    {contentType==="main" && <Main/>}
+    {contentType==="employees" && <EmployeeContent/>}
+    </>
   );
 }
 
